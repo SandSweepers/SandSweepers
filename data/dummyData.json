@@ -1,0 +1,68 @@
+{
+    "users": [
+        { "id": 1, "username": "Madiou", "email": "madiou@mail.com", "password": "pass123", "role": "admin", "friendcode": "ABC123", "points": 5020, "total_time_spent": 2.2, "profile_picture": "https://example.com/profiles/madiou.png" },
+        { "id": 2, "username": "Max", "email": "max@mail.com", "password": "pass456", "role": "user", "friendcode": "DEF456", "points": 3410, "total_time_spent": 5.4, "profile_picture": "https://example.com/profiles/max.png" },
+        { "id": 3, "username": "Yami", "email": "yami@mail.com", "password": "pass789", "role": "user", "friendcode": "GHI789", "points": 7210, "total_time_spent": 3.4, "profile_picture": "https://example.com/profiles/yami.png" },
+        { "id": 4, "username": "Alice", "email": "alice@mail.com", "password": "passalice", "role": "user", "friendcode": "JKL012", "points": 2900, "total_time_spent": 4.1, "profile_picture": "https://example.com/profiles/alice.png" },
+        { "id": 5, "username": "Liam", "email": "liam@mail.com", "password": "passliam", "role": "user", "friendcode": "MNO345", "points": 6300, "total_time_spent": 6.2, "profile_picture": "https://example.com/profiles/liam.png" },
+        { "id": 6, "username": "Sofia", "email": "sofia@mail.com", "password": "passsofia", "role": "user", "friendcode": "PQR678", "points": 4500, "total_time_spent": 3.9, "profile_picture": "https://example.com/profiles/sofia.png" },
+        { "id": 7, "username": "Leo", "email": "leo@mail.com", "password": "passleo", "role": "user", "friendcode": "STU901", "points": 720, "total_time_spent": 2.1, "profile_picture": "https://example.com/profiles/leo.png" },
+        { "id": 8, "username": "Emma", "email": "emma@mail.com", "password": "passemma", "role": "user", "friendcode": "VWX234", "points": 8120, "total_time_spent": 5.7, "profile_picture": "https://example.com/profiles/emma.png" },
+        { "id": 9, "username": "Noah", "email": "noah@mail.com", "password": "passnoah", "role": "user", "friendcode": "YZA567", "points": 5400, "total_time_spent": 3.2, "profile_picture": "https://example.com/profiles/noah.png" },
+        { "id": 10, "username": "Oliver", "email": "oliver@mail.com", "password": "passoliver", "role": "user", "friendcode": "BCD890", "points": 3800, "total_time_spent": 4.5, "profile_picture": "https://example.com/profiles/oliver.png" },
+        { "id": 11, "username": "Mia", "email": "mia@mail.com", "password": "passmia", "role": "user", "friendcode": "EFG123", "points": 4200, "total_time_spent": 3.8, "profile_picture": "https://example.com/profiles/mia.png" },
+        { "id": 12, "username": "James", "email": "james@mail.com", "password": "passjames", "role": "user", "friendcode": "HIJ456", "points": 2600, "total_time_spent": 2.9, "profile_picture": "https://example.com/profiles/james.png" },
+        { "id": 13, "username": "Sophia", "email": "sophia@mail.com", "password": "passsophia", "role": "user", "friendcode": "KLM789", "points": 7600, "total_time_spent": 6.5, "profile_picture": "https://example.com/profiles/sophia.png" },
+        { "id": 14, "username": "Daniel", "email": "daniel@mail.com", "password": "passdaniel", "role": "user", "friendcode": "NPO123", "points": 4800, "total_time_spent": 4.2, "profile_picture": "https://example.com/profiles/daniel.png" },
+        { "id": 15, "username": "Ella", "email": "ella@mail.com", "password": "passella", "role": "user", "friendcode": "QRS456", "points": 5900, "total_time_spent": 3.6, "profile_picture": "https://example.com/profiles/ella.png" },
+        { "id": 16, "username": "Henry", "email": "henry@mail.com", "password": "passhenry", "role": "user", "friendcode": "TUV789", "points": 6700, "total_time_spent": 5.1, "profile_picture": "https://example.com/profiles/henry.png" },
+        { "id": 17, "username": "Luna", "email": "luna@mail.com", "password": "passluna", "role": "user", "friendcode": "WXY012", "points": 3200, "total_time_spent": 2.7, "profile_picture": "https://example.com/profiles/luna.png" },
+        { "id": 18, "username": "Jackson", "email": "jackson@mail.com", "password": "passjackson", "role": "user", "friendcode": "ZAB345", "points": 7100, "total_time_spent": 4.9, "profile_picture": "https://example.com/profiles/jackson.png" },
+        { "id": 19, "username": "Ava", "email": "ava@mail.com", "password": "passava", "role": "user", "friendcode": "CDE678", "points": 5700, "total_time_spent": 5.3, "profile_picture": "https://example.com/profiles/ava.png" },
+        { "id": 20, "username": "Lucas", "email": "lucas@mail.com", "password": "passlucas", "role": "user", "friendcode": "FGH901", "points": 6200, "total_time_spent": 4.0, "profile_picture": "https://example.com/profiles/lucas.png" }
+      ],
+    "friendList": [
+      { "id": 1, "username": "Madiou" },
+      { "id": 2, "username": "Max" },
+      { "id": 3, "username": "Yami" }
+    ],
+    "budgets": [
+      { "id": 1, "description": "7 Day Streak!" },
+      { "id": 2, "description": "1 Kilo Collected!" },
+      { "id": 3, "description": "10 Kilo Collected!" }
+    ],
+    "locations": [
+      { "id": 1, "description": "Beach Palma", "image": "beach.png", "dirtyness": "very dirty" },
+      { "id": 2, "description": "Beach Aqua", "image": "aqua.png", "dirtyness": "dirty" },
+      { "id": 3, "description": "Beach Edge", "image": "edge.png", "dirtyness": "somewhat dirty" }
+    ],
+    "activities": [
+      { "id": 1 }
+    ],
+    "userActivities": [
+      { "user_id": 1, "activity_id": 1 },
+      { "user_id": 2, "activity_id": 1 },
+      { "user_id": 3, "activity_id": 1 }
+    ],
+    "userBudgets": [
+      { "user_id": 1, "budget_id": 2 },
+      { "user_id": 2, "budget_id": 1 },
+      { "user_id": 3, "budget_id": 3 }
+    ],
+    "userFriendList": [
+      { "user_id": 1, "friendlist_id": 2 },
+      { "user_id": 1, "friendlist_id": 3 },
+      { "user_id": 2, "friendlist_id": 1 },
+      { "user_id": 3, "friendlist_id": 2 }
+    ],
+    "userVisitedLocations": [
+      { "user_id": 1, "location_id": 1, "earned_points": 1000, "time_spent": 45 },
+      { "user_id": 1, "location_id": 2, "earned_points": 800, "time_spent": 30 },
+      { "user_id": 1, "location_id": 3, "earned_points": 220, "time_spent": 15 },
+      { "user_id": 2, "location_id": 2, "earned_points": 500, "time_spent": 40 },
+      { "user_id": 2, "location_id": 1, "earned_points": 900, "time_spent": 55 },
+      { "user_id": 3, "location_id": 3, "earned_points": 1500, "time_spent": 70 },
+      { "user_id": 3, "location_id": 1, "earned_points": 1200, "time_spent": 90 }
+    ]
+  }
+  
