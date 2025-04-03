@@ -17,7 +17,7 @@
         { "id": 15, "username": "Ella", "email": "ella@mail.com", "password": "passella", "role": "user", "friendcode": "QRS456", "points": 5900, "total_time_spent": 3.6, "profile_picture": "https://example.com/profiles/ella.png" },
         { "id": 16, "username": "Henry", "email": "henry@mail.com", "password": "passhenry", "role": "user", "friendcode": "TUV789", "points": 6700, "total_time_spent": 5.1, "profile_picture": "https://example.com/profiles/henry.png" },
         { "id": 17, "username": "Luna", "email": "luna@mail.com", "password": "passluna", "role": "user", "friendcode": "WXY012", "points": 3200, "total_time_spent": 2.7, "profile_picture": "https://example.com/profiles/luna.png" },
-        { "id": 18, "username": "Jackson", "email": "jackson@mail.com", "password": "passjackson", "role": "user", "friendcode": "ZAB345", "points": 7100, "total_time_spent": 4.9, "profile_picture": "https://example.com/profiles/jackson.png" },
+        { "id": 18, "username": "Jackson", "email": "jackson@mail.com", "password": "passjackson", "role": "user", "friendcode": "ZAB345", "points": 7100, "total_time_spent": 4.9, "profile_picture": "https://img.freepik.com/premium-photo/happy-girl-with-dark-long-wavy-hair-communicating-video-chat_274679-40752.jpg?w=740" },
         { "id": 19, "username": "Ava", "email": "ava@mail.com", "password": "passava", "role": "user", "friendcode": "CDE678", "points": 5700, "total_time_spent": 5.3, "profile_picture": "https://example.com/profiles/ava.png" },
         { "id": 20, "username": "Lucas", "email": "lucas@mail.com", "password": "passlucas", "role": "user", "friendcode": "FGH901", "points": 6200, "total_time_spent": 4.0, "profile_picture": "https://example.com/profiles/lucas.png" }
       ],
@@ -31,11 +31,36 @@
       { "id": 2, "description": "1 Kilo Collected!" },
       { "id": 3, "description": "10 Kilo Collected!" }
     ],
-    "locations": [
-      { "id": 1, "description": "Beach Palma", "image": "beach.png", "dirtyness": "very dirty" },
-      { "id": 2, "description": "Beach Aqua", "image": "aqua.png", "dirtyness": "dirty" },
-      { "id": 3, "description": "Beach Edge", "image": "edge.png", "dirtyness": "somewhat dirty" }
+   "locations": [
+    {
+        "id": 1,
+        "name": "Beach Palma",
+        "description": "A popular beach known for its golden sands and vibrant atmosphere.",
+        "image": "https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "dirtyness": "very dirty",
+        "address": "Calle de la Playa 123, Palma, Spain",
+        "extra_points": 500
+    },
+    {
+        "id": 2,
+        "name": "Beach Aqua",
+        "description": "A serene beach with crystal-clear waters, perfect for relaxation.",
+        "image": "aqua.png",
+        "dirtyness": "dirty",
+        "address": "Av. del Mar 456, Aqua City, Portugal",
+        "extra_points": 300
+    },
+    {
+        "id": 3,
+        "name": "Beach Edge",
+        "description": "A rugged coastline with breathtaking views and diverse marine life.",
+        "image": "edge.png",
+        "dirtyness": "somewhat dirty",
+        "address": "Coastal Road 789, Edge Town, France",
+        "extra_points": 100 }
     ],
+
+
     "activities": [
       { "id": 1 }
     ],
