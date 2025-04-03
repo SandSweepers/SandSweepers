@@ -28,8 +28,8 @@ export const Leaderboard = () => {
             {dummyData.slice(0, 3).map((user, index) => {
               // Determine position class
               let positionClass = "";
-              if (index === 0) positionClass = "second-position";
-              else if (index === 1) positionClass = "first-position";
+              if (index === 1) positionClass = "second-position";
+              else if (index === 0) positionClass = "first-position";
               else if (index === 2) positionClass = "third-position";
               
               return (

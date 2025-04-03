@@ -2,7 +2,7 @@
     "users": [
         { "id": 1, "username": "Madiou", "email": "madiou@mail.com", "password": "pass123", "role": "admin", "friendcode": "ABC123", "points": 5020, "total_time_spent": 2.2, "profile_picture": "https://example.com/profiles/madiou.png" },
         { "id": 2, "username": "Max", "email": "max@mail.com", "password": "pass456", "role": "user", "friendcode": "DEF456", "points": 3410, "total_time_spent": 5.4, "profile_picture": "https://example.com/profiles/max.png" },
-        { "id": 3, "username": "Yami", "email": "yami@mail.com", "password": "pass789", "role": "user", "friendcode": "GHI789", "points": 7210, "total_time_spent": 3.4, "profile_picture": "https://example.com/profiles/yami.png" },
+        { "id": 3, "username": "Yami", "email": "yami@mail.com", "password": "pass789", "role": "user", "friendcode": "GHI789", "points": 8210, "total_time_spent": 3.4, "profile_picture": "https://img.freepik.com/premium-photo/happy-girl-with-dark-long-wavy-hair-communicating-video-chat_274679-40752.jpg?w=740" },
         { "id": 4, "username": "Alice", "email": "alice@mail.com", "password": "passalice", "role": "user", "friendcode": "JKL012", "points": 2900, "total_time_spent": 4.1, "profile_picture": "https://example.com/profiles/alice.png" },
         { "id": 5, "username": "Liam", "email": "liam@mail.com", "password": "passliam", "role": "user", "friendcode": "MNO345", "points": 6300, "total_time_spent": 6.2, "profile_picture": "https://example.com/profiles/liam.png" },
         { "id": 6, "username": "Sofia", "email": "sofia@mail.com", "password": "passsofia", "role": "user", "friendcode": "PQR678", "points": 4500, "total_time_spent": 3.9, "profile_picture": "https://example.com/profiles/sofia.png" },
