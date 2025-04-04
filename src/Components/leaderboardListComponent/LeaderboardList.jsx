@@ -18,7 +18,7 @@ export const LeaderboardList = () => {
     }, []);
 
     const handleShowMore = () => {
-        setDisplayCount((prevCount) => prevCount + 3); 
+        setDisplayCount((prevCount) => prevCount + 3); // you can change this alice
     };
 
     return (
