@@ -24,7 +24,7 @@ export const LeaderboardList = () => {
     return (
         <div className="leaderboard-list">
             <div className="list-header">
-                <div>Friends</div>
+                <div>Name</div>
                 <div>Hours</div>
                 <div>Points</div>
             </div>

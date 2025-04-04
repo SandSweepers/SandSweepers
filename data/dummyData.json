@@ -36,7 +36,7 @@
         "id": 1,
         "name": "Beach Palma",
         "description": "A popular beach known for its golden sands and vibrant atmosphere.",
-        "image": "https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "image": "https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg",
         "dirtyness": "very dirty",
         "address": "Calle de la Playa 123, Palma, Spain",
         "extra_points": 500
@@ -57,8 +57,64 @@
         "image": "edge.png",
         "dirtyness": "somewhat dirty",
         "address": "Coastal Road 789, Edge Town, France",
-        "extra_points": 100 }
-    ],
+        "extra_points": 100
+    },
+    {
+        "id": 4,
+        "name": "Golden Bay",
+        "description": "A secluded beach with golden sands and lush greenery surrounding it.",
+        "image": "https://images.pexels.com/photos/1591374/pexels-photo-1591374.jpeg",
+        "dirtyness": "very dirty",
+        "address": "Sunset Drive 101, Malta",
+        "extra_points": 500
+    },
+    {
+        "id": 5,
+        "name": "Azure Coast",
+        "description": "Famous for its clear blue waters and gentle waves, ideal for swimming.",
+        "image": "azure.png",
+        "dirtyness": "dirty",
+        "address": "Coastal Boulevard 23, Nice, France",
+        "extra_points": 300
+    },
+    {
+        "id": 6,
+        "name": "Silver Sands",
+        "description": "An untouched paradise with fine white sand and a peaceful environment.",
+        "image": "silversands.png",
+        "dirtyness": "somewhat dirty",
+        "address": "Ocean Avenue 78, Bali, Indonesia",
+        "extra_points": 100
+    },
+    {
+        "id": 7,
+        "name": "Laguna Beach",
+        "description": "A vibrant beach with coral reefs and a hotspot for snorkeling.",
+        "image": "https://images.pexels.com/photos/674729/pexels-photo-674729.jpeg",
+        "dirtyness": "very dirty",
+        "address": "Laguna Road 456, California, USA",
+        "extra_points": 500
+    },
+    {
+        "id": 8,
+        "name": "Paradise Cove",
+        "description": "A tropical paradise with palm trees and warm, shallow waters.",
+        "image": "paradisecove.png",
+        "dirtyness": "dirty",
+        "address": "Tropical Lane 32, Maldives",
+        "extra_points": 300
+    },
+    {
+        "id": 9,
+        "name": "Emerald Bay",
+        "description": "Surrounded by cliffs and lush greenery, perfect for nature lovers.",
+        "image": "emeraldbay.png",
+        "dirtyness": "somewhat dirty",
+        "address": "Emerald Drive 99, Thailand",
+        "extra_points": 100
+    }
+],
+
 
 
     "activities": [
