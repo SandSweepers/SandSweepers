@@ -31,7 +31,7 @@
       { "id": 2, "description": "1 Kilo Collected!" },
       { "id": 3, "description": "10 Kilo Collected!" }
     ],
-   "locations": [
+"locations": [
     {
         "id": 1,
         "name": "Beach Palma",
