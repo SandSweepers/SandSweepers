@@ -45,7 +45,7 @@
         "id": 2,
         "name": "Beach Aqua",
         "description": "A serene beach with crystal-clear waters, perfect for relaxation.",
-        "image": "aqua.png",
+        "image": "/images/aqua.png",
         "dirtyness": "dirty",
         "address": "Av. del Mar 456, Aqua City, Portugal",
         "extra_points": 300
@@ -54,7 +54,7 @@
         "id": 3,
         "name": "Beach Edge",
         "description": "A rugged coastline with breathtaking views and diverse marine life.",
-        "image": "edge.png",
+        "image": "/images/edge.png",
         "dirtyness": "somewhat dirty",
         "address": "Coastal Road 789, Edge Town, France",
         "extra_points": 100
@@ -72,7 +72,7 @@
         "id": 5,
         "name": "Azure Coast",
         "description": "Famous for its clear blue waters and gentle waves, ideal for swimming.",
-        "image": "azure.png",
+        "image": "/images/azure.png",
         "dirtyness": "dirty",
         "address": "Coastal Boulevard 23, Nice, France",
         "extra_points": 300
@@ -81,7 +81,7 @@
         "id": 6,
         "name": "Silver Sands",
         "description": "An untouched paradise with fine white sand and a peaceful environment.",
-        "image": "silversands.png",
+        "image": "/images/silversands.png",
         "dirtyness": "somewhat dirty",
         "address": "Ocean Avenue 78, Bali, Indonesia",
         "extra_points": 100
@@ -99,7 +99,7 @@
         "id": 8,
         "name": "Paradise Cove",
         "description": "A tropical paradise with palm trees and warm, shallow waters.",
-        "image": "paradisecove.png",
+        "image": "/images/paradisecove.png",
         "dirtyness": "dirty",
         "address": "Tropical Lane 32, Maldives",
         "extra_points": 300
@@ -108,7 +108,7 @@
         "id": 9,
         "name": "Emerald Bay",
         "description": "Surrounded by cliffs and lush greenery, perfect for nature lovers.",
-        "image": "emeraldbay.png",
+        "image": "/images/emeraldbay.png",
         "dirtyness": "somewhat dirty",
         "address": "Emerald Drive 99, Thailand",
         "extra_points": 100

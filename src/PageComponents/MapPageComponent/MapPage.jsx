@@ -1,34 +1,74 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './MapPage.scss';
 
+// We shoudlprobely use some better icons sisnce these gives errors but shit it works for now
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import iconRetina from 'leaflet/dist/images/marker-icon-2x.png';
+
+// Set up the default icon 
+let DefaultIcon = L.icon({
+  iconUrl: icon,
+  iconRetinaUrl: iconRetina,
+  shadowUrl: iconShadow,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41]
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
+
 export const MapPage = () => {
+    const [locations, setLocations] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [error, setError] = useState(null);
+
     useEffect(() => {
-        const map = L.map('map-container', {
-            center: [28.0033198, -15.4163828], // Updated center coordinates
-            zoom: 13, // Updated zoom level
-            scrollWheelZoom: false, // Disable scroll wheel zoom
-        });
-
-        // Add a tile layer (e.g., OpenStreetMap)
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        }).addTo(map);
-
-        // Add a marker as an example
-        L.marker([28.0033198, -15.4163828]).addTo(map).bindPopup('Gran Canaria').openPopup();
-
-        return () => {
-            map.remove(); // Clean up the map instance on component unmount
-        };
+        fetch('http://localhost:8802/cards')
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error('Failed to fetch locations');
+                }
+                return res.json();
+            })
+            .then(setLocations)
+            .catch(err => {
+                console.error('Error fetching locations:', err);
+                setError('Failed to load locations. Please try again later.');
+            });
     }, []);
 
-    return <div id="map-container" className="map-container"></div>;
+    const filteredLocations = locations.filter(location =>
+        location.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    return (
+        <div className="map-page">
+            <div className="search-bar">
+                <input
+                    type="text"
+                    placeholder="Search locations..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                />
+            </div>
+            <MapContainer center={[27.9629, -15.5896]} zoom={11} style={{ height: '100vh', width: '100%' }}>
+                <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution="&copy; OpenStreetMap contributors"
+                />
+                {filteredLocations.map((location) => (
+                    <Marker key={location.id} position={[location.lat, location.lng]}>
+                        <Popup>
+                            <img id='mapImage' src={location.image_url} alt={location.title} />
+                            <h3>{location.title}</h3>
+                            <p>{location.description}</p>
+                        </Popup>
+                    </Marker>
+                ))}
+            </MapContainer>
+        </div>
+    );
 };
-
-
-
-
-
-
