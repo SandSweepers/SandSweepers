@@ -21,6 +21,10 @@ export const LeaderboardList = () => {
         setDisplayCount((prevCount) => prevCount + 3); 
     };
 
+    const handleShowLess = () => {
+        setDisplayCount((prevCount) => Math.max(prevCount - 3, 3)); // Ensure minimum display count is 3
+    };
+
     return (
         <div className="leaderboard-list">
             <div className="list-header">
@@ -44,6 +48,7 @@ export const LeaderboardList = () => {
             {displayCount + 3 < dummyData.length && ( 
                 <button onClick={handleShowMore}>Show More</button>
             )}
+          
         </div>
     );
 };

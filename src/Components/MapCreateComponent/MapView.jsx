@@ -72,9 +72,10 @@ export const MapView = () => {
           {cards.map(card => (
             <Marker key={card.id} position={[card.lat, card.lng]}>
               <Popup>
+              {card.image_url && <img src={card.image_url} width="100" alt={card.title} />}
                 <strong>{card.title}</strong><br />
-                {card.description}<br />
-                {card.image_url && <img src={card.image_url} width="100" alt={card.title} />}
+                {card.address}<br />
+
               </Popup>
             </Marker>
           ))}

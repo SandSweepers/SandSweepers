@@ -19,7 +19,7 @@ const db = mysql.createPool({
   database: process.env.DB_NAME,
 });
 
-// S3 client setup that dosent work. but fuck that for now we implement that as one of the last parts (Cloudflare R2) 
+// S3 client setup (Cloudflare R2)
 const s3 = new S3Client({
   region: 'auto',
   endpoint: process.env.R2_ENDPOINT,
@@ -31,9 +31,14 @@ const s3 = new S3Client({
 
 app.post('/cards', async (req, res) => {
   try {
-    const { title, description, lat, lng, imageBase64 } = req.body;
+    const { title, description, lat, lng, imageBase64, dirtiness, address } = req.body;
 
-    let imageUrl = null;
+    // Validate required fields
+    if (!title || !description || !lat || !lng || !address || !dirtiness) {
+      return res.status(400).json({ error: 'Missing required fields' });
+    }
+
+    let image_Url = null;
     if (imageBase64) {
       try {
         const buffer = Buffer.from(imageBase64.replace(/^data:image\/\w+;base64,/, ""), 'base64');
@@ -43,7 +48,7 @@ app.post('/cards', async (req, res) => {
           Bucket: process.env.R2_BUCKET_NAME,
           Key: imageName,
           Body: buffer,
-          ContentType: 'image/jpeg', // Maybe we should add more types but i currently dont know if cloudflare r2 can support it 
+          ContentType: 'image/jpeg',
           ACL: 'public-read'
         };
 
@@ -53,25 +58,35 @@ app.post('/cards', async (req, res) => {
         });
 
         await s3.send(new PutObjectCommand(uploadParams));
-        imageUrl = `${process.env.R2_ENDPOINT}/${process.env.R2_BUCKET_NAME}/${imageName}`;
-        console.log('Successfully uploaded to R2:', imageUrl);
+        image_Url = `${process.env.R2_PUBLIC_URL}/${imageName}`;
+        console.log('Successfully uploaded to R2:', image_Url);
       } catch (uploadError) {
         console.error('Error uploading to R2:', uploadError);
-        // Continue without the image if upload fails (it does for now)
+        // Continue without the image if upload fails
       }
     }
 
     const [result] = await db.execute(
-      'INSERT INTO cards (title, description, image_url, lat, lng) VALUES (?, ?, ?, ?, ?)',
-      [title, description, imageUrl, lat, lng]
+      'INSERT INTO cards (title, description, image_url, lat, lng, dirtiness, address) VALUES (?, ?, ?, ?, ?, ?, ?)',
+      [title, description, image_Url, lat, lng, dirtiness, address]
     );
 
-    res.json({ id: result.insertId, title, description, imageUrl, lat, lng });
+    res.json({ 
+      id: result.insertId, 
+      title, 
+      description, 
+      image_Url, 
+      lat, 
+      lng, 
+      dirtiness,
+      address,
+    });
   } catch (error) {
     console.error('Error creating card:', error);
     res.status(500).json({ error: 'Failed to create card', details: error.message });
   }
 });
+
 
 app.get('/cards', async (req, res) => {
   try {
@@ -83,10 +98,26 @@ app.get('/cards', async (req, res) => {
   }
 });
 
+// Add a route to get a single card by ID
+app.get('/cards/:id', async (req, res) => {
+  try {
+    const [rows] = await db.execute('SELECT * FROM cards WHERE id = ?', [req.params.id]);
+    
+    if (rows.length === 0) {
+      return res.status(404).json({ error: 'Card not found' });
+    }
+    
+    res.json(rows[0]);
+  } catch (error) {
+    console.error('Error fetching card:', error);
+    res.status(500).json({ error: 'Failed to fetch card', details: error.message });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
   console.log('R2 Configuration:', {
     bucket: process.env.R2_BUCKET_NAME,
     endpoint: process.env.R2_ENDPOINT
   });
-}); 
+});
