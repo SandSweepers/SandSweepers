@@ -1,0 +1,53 @@
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url('https://example.com/beach-image.jpg'); // Remplace par ton image
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+
+  .logo {
+    font-size: 48px; // Plus grand pour correspondre à l'image
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); // Ombre légère
+    margin-bottom: 40px;
+  }
+
+  .login-btn {
+    margin: 10px;
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: #1e3a8a; // Bleu foncé
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #3b82f6; // Bleu plus clair au survol
+    }
+  }
+
+  .signup-btn {
+    margin: 10px;
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1); // Fond légèrement blanc au survol
+    }
+  }
+}
