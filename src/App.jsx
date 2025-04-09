@@ -1,14 +1,13 @@
 import React from 'react';
 import { Navbar } from "./Components/NavComponent/Nav.jsx";
-import { Main } from './Components/MainComponent/Main.jsx';
-import { Router } from './Components/RouterComponent/Router.jsx';
+import { Main } from './Components/MainComponent/Main.jsx'
+import { AppRouter } from "./Components/RouterComponent/Router";
 import './styles/style.scss';
-
 function App() {
   return (
     <>
       <Main>
-        <Router />
+        <AppRouter />
       </Main>
       <Navbar />
     </>

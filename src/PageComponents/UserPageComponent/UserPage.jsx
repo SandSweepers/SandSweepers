@@ -1,7 +1,16 @@
-import './UserPage.scss'
+import './UserPage.scss';
+import React from 'react';
+import { ProfileHeader } from '../../Components/ProfileHeaderComponent/ProfileHeader';
+import { StatsCard } from '../../Components/StatsCardComponent/StatsCard';
+import { LastPlaces } from '../../Components/LastPlacesComponent/LastPlaces';
+
 
 export const UserPage = () => {
-
   return (
-<h1>user</h1>  );
+    <div className="user-profile">
+      <ProfileHeader />
+      <StatsCard />
+      <LastPlaces />
+    </div>
+  );
 };
