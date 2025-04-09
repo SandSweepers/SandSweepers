@@ -8,6 +8,7 @@ import  SignUpPage  from "../../PageComponents/Auth/SignUpPage";
 import { LoginPage } from "../../PageComponents/Auth/LoginPage";
 import { MapView } from "../MapCreateComponent/MapView.jsx";
 
+import { BeachDetail } from "../BeachDetailComponent/BeachDetail.jsx";
 export const AppRouter = () => {
   return (
     <Routes>
@@ -21,6 +22,7 @@ export const AppRouter = () => {
       <Route path="/" index element={<HomePage />} />
       <Route path="/map" element={<MapPage/>}/>
       <Route path="/card" element={<MapView/>}/>
+      <Route path="/beach/:id" element={<BeachDetail/>}/>
     </Routes>
   );
 };
