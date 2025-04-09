@@ -7,6 +7,10 @@ import { LandingPage } from "../../PageComponents/Auth/LandingPage";
 import { SignUpPage } from "../../PageComponents/Auth/SignUpPage";
 import { LoginPage } from "../../PageComponents/Auth/LoginPage";
 import { MapView } from "../MapCreateComponent/MapView.jsx";
+import { BeachDetailPage } from "../BeachDetailComponent/BeachDetail.jsx";
+
+export const Router = () => {
+
 evelop
 export const AppRouter = () => {
   return (
@@ -20,6 +24,8 @@ export const AppRouter = () => {
       <Route path="/" index element={<HomePage />} />
       <Route path="/map" element={<MapPage/>}/>
       <Route path="/card" element={<MapView/>}/>
+      <Route path="/beach/:id" element={<BeachDetailPage/>}/>
+
 
     </Routes>
   );

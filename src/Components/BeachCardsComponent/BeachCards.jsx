@@ -32,6 +32,7 @@ export const BeachCard = () => {
                             <p>{location.description}</p>
                             <Link to="/map">{location.address}</Link>
                             <span>PTS: {location.extra_points}</span>
+                        
                         </div>
                     </div>
                 ))}
