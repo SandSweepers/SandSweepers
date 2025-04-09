@@ -4,12 +4,11 @@ import { HomePage } from "../../PageComponents/HomePageComponent/HomePage.jsx";
 import { UserPage } from "../../PageComponents/UserPageComponent/UserPage.jsx";
 import { MapPage } from "../../PageComponents/MapPageComponent/MapPage.jsx";
 import { LandingPage } from "../../PageComponents/Auth/LandingPage";
-import { SignUpPage } from "../../PageComponents/Auth/SignUpPage";
+import  SignUpPage  from "../../PageComponents/Auth/SignUpPage";
 import { LoginPage } from "../../PageComponents/Auth/LoginPage";
 import { MapView } from "../MapCreateComponent/MapView.jsx";
+
 import { BeachDetail } from "../BeachDetailComponent/BeachDetail.jsx";
-
-
 export const AppRouter = () => {
   return (
     <Routes>

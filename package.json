@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-   "start": "node app.jsx",
+    "start": "node app.jsx",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
@@ -13,6 +13,7 @@
   "dependencies": {
     "axios": "^1.8.4",
     "dotenv": "^16.4.7",
+    "leaflet": "^1.9.4",
     "mysql": "^2.18.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
