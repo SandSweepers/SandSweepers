@@ -5,9 +5,12 @@ import './HomePage.scss'
 export const HomePage = () => {
 
   return (
-    <> 
-    <Leaderboard/>
-    <BeachCard/>
-</>
-);
+    <>
+      <Leaderboard />
+      <BeachCard />
+      <div class="page">
+        <div class="rounded-box"></div>
+      </div>
+    </>
+  );
 };
