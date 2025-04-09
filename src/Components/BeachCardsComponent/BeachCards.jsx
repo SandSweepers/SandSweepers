@@ -18,7 +18,9 @@ export const BeachCard = () => {
 
     return (
         <>
-            <h1>Beaches</h1>
+            <h2>Beaches</h2>
+            <Link to={"/card"}>+</Link>
+
             <div className="beach-gallery">
                 {dummyData.map((location) => (
                     <div key={location.id} className="beach-card">

@@ -1,0 +1,30 @@
+.map-page {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+.search-bar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 5; 
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.search-bar input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.5rem;
+  width: 200px;
+  font-size: 1rem;
+}
+
+#mapImage{
+  width: 15vh;
+  height: auto;
+  overflow-x: hidden;
+}

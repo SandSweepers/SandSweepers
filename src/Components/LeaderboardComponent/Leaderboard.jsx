@@ -18,6 +18,14 @@ export const Leaderboard = () => {
             });
     }, []);
 
+    const handleShowMore = () => {
+        setShowMore(true);
+    };
+
+    const handleShowLess = () => {
+        setShowMore(false);
+    };
+
     return (
         <div className="leaderboard">
           <div className="leaderboard-header">
@@ -46,9 +54,13 @@ export const Leaderboard = () => {
             })}
           </div>
           {showMore && <LeaderboardList />}
-          {!showMore && (
-            <button className="see-more-btn" onClick={() => setShowMore(true)}>
+          {!showMore ? (
+            <button className="see-more-btn" onClick={handleShowMore}>
               See More
+            </button>
+          ) : (
+            <button className="see-less-btn" onClick={handleShowLess}>
+              Show Less
             </button>
           )}
         </div>
