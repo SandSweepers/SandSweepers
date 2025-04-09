@@ -29,7 +29,7 @@ export const Leaderboard = () => {
     return (
         <div className="leaderboard">
           <div className="leaderboard-header">
-            <span className="logo">LOGO</span>
+            <div className="logo">LOGO</div>
             <h1>Leaderboard</h1>
           </div>
           <div className="top-users">
