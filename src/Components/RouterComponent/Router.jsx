@@ -4,6 +4,7 @@ import { HomePage } from "../../PageComponents/HomePageComponent/HomePage.jsx";
 import { UserPage } from "../../PageComponents/UserPageComponent/UserPage.jsx";
 import { MapPage } from "../../PageComponents/MapPageComponent/MapPage.jsx";
 import { MapView } from "../MapCreateComponent/MapView.jsx";
+import { BeachDetailPage } from "../BeachDetailComponent/BeachDetail.jsx";
 
 export const Router = () => {
 
@@ -13,6 +14,8 @@ export const Router = () => {
       <Route path="/" index element={<HomePage />} />
       <Route path="/map" element={<MapPage/>}/>
       <Route path="/card" element={<MapView/>}/>
+      <Route path="/beach/:id" element={<BeachDetailPage/>}/>
+
 
     </Routes>
   )
