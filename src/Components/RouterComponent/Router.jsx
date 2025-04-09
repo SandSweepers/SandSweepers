@@ -4,12 +4,13 @@ import { HomePage } from "../../PageComponents/HomePageComponent/HomePage.jsx";
 import { UserPage } from "../../PageComponents/UserPageComponent/UserPage.jsx";
 import { MapPage } from "../../PageComponents/MapPageComponent/MapPage.jsx";
 import { LandingPage } from "../../PageComponents/Auth/LandingPage";
-import { SignUpPage } from "../../PageComponents/Auth/SignUpPage";
+import  SignUpPage  from "../../PageComponents/Auth/SignUpPage";
 import { LoginPage } from "../../PageComponents/Auth/LoginPage";
 import { MapView } from "../MapCreateComponent/MapView.jsx";
-evelop
+
 export const AppRouter = () => {
   return (
+    <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/landing" element={<LandingPage />} />
       <Route path="/signup" element={<SignUpPage />} />
@@ -20,7 +21,6 @@ export const AppRouter = () => {
       <Route path="/" index element={<HomePage />} />
       <Route path="/map" element={<MapPage/>}/>
       <Route path="/card" element={<MapView/>}/>
-
     </Routes>
   );
 };
