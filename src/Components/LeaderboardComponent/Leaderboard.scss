@@ -126,7 +126,6 @@ $light-gray: #f2f2f2;
   }
 
   .see-more-btn {
-    border: none;
     border-radius: 16px;
     font-size: 12px;
     font-weight: 500;
@@ -134,12 +133,17 @@ $light-gray: #f2f2f2;
     transition: all 0.3s ease;
     margin-top: 20px;
     margin-left: 265px;
+    color: #FEFEFE;
+    background-color: #32B0FF;
+    border: 2px solid #32B0FF;
 
     &:hover {
-      background-color: darken($bmw-white, 5%);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      transform: translateY(-2px);
+      background-color: #FEFEFE;
+      border-color: #FEFEFE;
+      color: #32B0FF;
     }
+
+
 
     &:active {
       transform: translateY(0);
@@ -177,5 +181,22 @@ $light-gray: #f2f2f2;
         }
       }
     }
+  }
+}
+
+.see-less-btn {
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #FEFEFE;
+  background-color: #191919;
+  border: 2px solid #191919;
+
+  &:hover {
+    background-color: #FEFEFE;
+    border-color: #FEFEFE;
+    color: black;
   }
 }

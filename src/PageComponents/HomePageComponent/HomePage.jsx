@@ -8,8 +8,8 @@ export const HomePage = () => {
     <>
       <Leaderboard />
       <BeachCard />
-      <div class="page">
-        <div class="rounded-box"></div>
+      <div className="page">
+        <div className="rounded-box"></div>
       </div>
     </>
   );

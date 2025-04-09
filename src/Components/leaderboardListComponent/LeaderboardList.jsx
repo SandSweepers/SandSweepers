@@ -26,11 +26,12 @@ export const LeaderboardList = () => {
     };
 
     return (
+        
         <div className="leaderboard-list">
             <div className="list-header">
-                <div>Name</div>
-                <div>Hours</div>
-                <div>Points</div>
+                    <span className='list-name'>Name</span>
+                    <span className='list-hours'>Hours</span>
+                    <span className='list-points'>Points</span>
             </div>
             
             <ul>
