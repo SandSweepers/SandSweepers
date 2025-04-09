@@ -4,7 +4,7 @@ import { FaArrowLeft, FaTrashAlt } from 'react-icons/fa';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import './BeachDetail.scss';
 
-export const BeachDetailPage = () => {
+export const BeachDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [beach, setBeach] = useState(null);
