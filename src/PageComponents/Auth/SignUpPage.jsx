@@ -3,7 +3,7 @@ import { AuthForm } from '../../Components/auth/AuthForm';
 import { Button } from '../../Components/ui/Button';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from "../../utils/axiosConfig";
 import './SignUpPage.scss';
 
 const SignupPage = () => {
