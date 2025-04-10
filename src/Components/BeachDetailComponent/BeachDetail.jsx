@@ -1,109 +1,86 @@
-import { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { FaArrowLeft, FaTrashAlt } from 'react-icons/fa';
-import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import { useParams, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import './BeachDetail.scss';
 
 export const BeachDetail = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
   const [beach, setBeach] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [favorite, setFavorite] = useState(false);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    const fetchBeach = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(`http://localhost:8080/api/locations/${id}`);
-        if (!response.ok) {
-          throw new Error('Beach not found');
-        }
-        const data = await response.json();
-        setBeach(data);
+    // Fetch beach details
+    fetch(`http://localhost:8080/api/locations`)
+      .then(response => response.json())
+      .then(data => {
+        const foundBeach = data.data.find(item => item.id === parseInt(id));
+        setBeach(foundBeach);
         setLoading(false);
-      } catch (err) {
-        setError(err.message);
+      })
+      .catch(error => {
+        console.error('Error fetching beach details:', error);
         setLoading(false);
-      }
-    };
+      });
 
-    fetchBeach();
+    // Fetch users who have been here (placeholder - in a real app, you'd fetch actual participants)
+    fetch('http://localhost:8080/api/users')
+      .then(response => response.json())
+      .then(data => {
+        // Just take the first 4 users as an example
+        setUsers(data.data.slice(0, 4));
+      })
+      .catch(error => {
+        console.error('Error fetching users:', error);
+      });
   }, [id]);
 
   if (loading) {
     return <div className="loading">Loading...</div>;
   }
 
-  if (error) {
-    return <div className="error">{error}</div>;
+  if (!beach) {
+    return <div className="error">Beach not found</div>;
   }
-
-  const toggleFavorite = () => {
-    setFavorite(!favorite);
-  };
 
   return (
     <div className="beach-detail">
-      <div className="beach-header">
-        <button className="back-button" onClick={() => navigate(-1)}>
-          <FaArrowLeft />
-        </button>
-        <button className="favorite-button" onClick={toggleFavorite}>
-          {favorite ? <AiFillHeart /> : <AiOutlineHeart />}
-        </button>
-      </div>
-      
       <div className="beach-image">
-        <img 
-          src={beach.image_url || '/beach-placeholder.jpg'} 
-          alt={beach.title}
-        />
+        <img src={beach.image_url} alt={beach.title} />
       </div>
       
-      <div className="beach-content">
-        <h1 className="beach-title">{beach.title}</h1>
+      <div className="beach-info">
+        <h2>{beach.title.toUpperCase()}</h2>
         
-        <section className="beach-section">
-          <h2>Description</h2>
-          <p className="beach-description">{beach.description || 'No description available.'}</p>
-        </section>
-        
-        <section className="beach-section trash-section">
-          <h2>Trash collected</h2>
-          <div className="trash-info">
-            <div className="trash-icon">
-              <FaTrashAlt />
-            </div>
-            <div className="trash-amount">
-              <span>{beach.trash_amount || '0'} kg</span>
-            </div>
-          </div>
-        </section>
-        
-        <section className="beach-section visitors-section">
-          <h2>Who have been here</h2>
-          <div className="visitors-avatars">
-            {/* Placeholder avatars */}
-            <div className="avatar"><img src="/avatar-placeholder.jpg" alt="Visitor" /></div>
-          </div>
-        </section>
-        
-        <div className="beach-location">
-          <p>Location: {beach.lat}, {beach.lng}</p>
-          <p>Address: {beach.address || 'No address provided'}</p>
-          <p>Dirtiness level: {beach.dirtiness || 'Not specified'}</p>
+        <div className="description-section">
+          <h3>Description</h3>
+          <p>{beach.description}</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque sed id placeat consequatur, ex facilis reiciendunt ipsum tempore perferendis dolorem finibus...</p>
         </div>
-      </div>
-      
-      <div className="action-button-container">
-        <button className="action-button">
+        
+        <div className="trash-collected">
+          <h3>Trash Collected</h3>
+          <div className="trash-amount">
+            <div className="trash-icon">🗑️</div>
+            <div className="trash-weight">34 kg</div>
+          </div>
+        </div>
+        
+        <div className="participants">
+          <h3>Who have been here</h3>
+          <div className="user-avatars">
+            {users.map(user => (
+              <div key={user.id} className="avatar">
+                <img src={user.avatar} alt={user.name} />
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        <Link to={`/cleanup-form/${id}`} className="i-was-here-button">
           I WAS HERE
-          <span className="arrow-icon">→</span>
-        </button>
+          <span className="arrow">→</span>
+        </Link>
       </div>
     </div>
   );
 };
-

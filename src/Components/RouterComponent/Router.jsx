@@ -8,6 +8,7 @@ import { SignUpPage } from "../../PageComponents/Auth/SignUpPage";
 import { LoginPage } from "../../PageComponents/Auth/LoginPage";
 import { MapView } from "../MapCreateComponent/MapView.jsx";
 import { BeachDetail } from "../BeachDetailComponent/BeachDetail.jsx";
+import { CleanupForm } from "../CleanupFormComponent/CleaupForm.jsx";
 
 
 export const AppRouter = () => {
@@ -24,6 +25,8 @@ export const AppRouter = () => {
       <Route path="/map" element={<MapPage/>}/>
       <Route path="/card" element={<MapView/>}/>
       <Route path="/beach/:id" element={<BeachDetail/>}/>
+      <Route path="/cleanup-form/:id" element={<CleanupForm />} />
+
     </Routes>
   );
 };

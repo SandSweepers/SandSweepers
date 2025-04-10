@@ -28,17 +28,21 @@ export const BeachCard = () => {
 
             <div className="beach-gallery">
                 {locations.map((location) => (
-                    <div key={location.id} className="beach-card">
-                        <div className="image-container">
+                        <div className="beach-card" key={location.id} >
+                            <div className="image-container">
+                            <Link to={`/beach/${location.id}`}  className="beach-card-link">
                             <img src={location.image_url} alt={location.title} />
+                            </Link>
+                            </div>
+                            <div className="details">
+                            <Link to={`/beach/${location.id}`}  className="beach-card-link">
+                                <h3>{location.title}</h3>
+                                <p>{location.description}</p>
+                                </Link>
+                                <Link to="/map">{location.address}</Link>
+                                <span>PTS: {location.dirtiness}</span>
+                            </div>
                         </div>
-                        <div className="details">
-                            <h3>{location.title}</h3>
-                            <p>{location.description}</p>
-                            <Link to="/map">{location.address}</Link>
-                            <span>PTS: {location.dirtiness}</span>
-                        </div>
-                    </div>
                 ))}
             </div>
         </>
