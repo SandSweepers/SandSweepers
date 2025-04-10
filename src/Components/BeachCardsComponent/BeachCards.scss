@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 50px;
   margin-bottom: -15px;
 
   .plus-icon {
@@ -74,6 +74,10 @@ h2 {
         font-size: 18px;
         font-weight: 800;
         color: #333;
+
+        &:hover {
+          color: #32B0FF;
+        }
       }
 
       p {
@@ -93,6 +97,7 @@ h2 {
 
         &:hover {
           text-decoration: underline;
+          color: #2c99de;
         }
       }
 
