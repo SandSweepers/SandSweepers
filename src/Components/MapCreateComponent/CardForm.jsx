@@ -36,7 +36,8 @@ export const CardForm = ({ onCardCreated, location }) => {
             address: formData.address // Ensure 'address' is sent in the payload
           };
 
-          const res = await fetch('http://localhost:8802/cards', {
+          // Updated API URL to match the correct backend endpoint
+          const res = await fetch('http://localhost:8080/api/locations', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)

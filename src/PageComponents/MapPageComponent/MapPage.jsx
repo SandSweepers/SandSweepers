@@ -4,12 +4,11 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './MapPage.scss';
 
-// We shoudlprobely use some better icons sisnce these gives errors but shit it works for now
+// Default icon setup
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import iconRetina from 'leaflet/dist/images/marker-icon-2x.png';
 
-// Set up the default icon 
 let DefaultIcon = L.icon({
     iconUrl: icon,
     iconRetinaUrl: iconRetina,
@@ -26,14 +25,14 @@ export const MapPage = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:8802/cards')
+        fetch('http://localhost:8080/api/locations')
             .then(res => {
                 if (!res.ok) {
                     throw new Error('Failed to fetch locations');
                 }
                 return res.json();
             })
-            .then(setLocations)
+            .then(data => setLocations(data.data))
             .catch(err => {
                 console.error('Error fetching locations:', err);
                 setError('Failed to load locations. Please try again later.');
@@ -45,7 +44,6 @@ export const MapPage = () => {
     );
 
     return (
-
         <div className="map-page">
             <div className="search-bar">
                 <input
@@ -54,8 +52,8 @@ export const MapPage = () => {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                 />
-                <span class="search-icon">
-                    <i class="material-icons">ICON</i>
+                <span className="search-icon">
+                    <i className="material-icons">search</i>
                 </span>
             </div>
             <MapContainer center={[27.9629, -15.5896]} zoom={11} style={{ height: '100vh', width: '100%' }}>
@@ -73,6 +71,7 @@ export const MapPage = () => {
                     </Marker>
                 ))}
             </MapContainer>
+            {error && <div className="error-message">{error}</div>}
         </div>
     );
 };

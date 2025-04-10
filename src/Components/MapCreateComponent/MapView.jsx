@@ -5,12 +5,11 @@ import 'leaflet/dist/leaflet.css';
 import { CardForm } from './CardForm';
 import './MapView.scss';
 
-// We shoudlprobely use some better icons sisnce these gives errors but shit it works for now
+// Default icon setup
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import iconRetina from 'leaflet/dist/images/marker-icon-2x.png';
 
-// Set up the default icon. Ideally we should replase this =l
 let DefaultIcon = L.icon({
   iconUrl: icon,
   iconRetinaUrl: iconRetina,
@@ -27,18 +26,21 @@ export const MapView = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:8802/cards')
-      .then(res => {
+    const fetchCards = async () => {
+      try {
+        const res = await fetch('http://localhost:8080/api/locations');
         if (!res.ok) {
           throw new Error('Failed to fetch cards');
         }
-        return res.json();
-      })
-      .then(setCards)
-      .catch(err => {
+        const data = await res.json();
+        setCards(data.data);
+      } catch (err) {
         console.error('Error fetching cards:', err);
         setError('Failed to load cards. The map will still work for adding new locations.');
-      });
+      }
+    };
+
+    fetchCards();
   }, []);
 
   const LocationSetter = () => {
@@ -51,7 +53,7 @@ export const MapView = () => {
   };
 
   const addNewCard = (card) => {
-    setCards(prev => [...prev, card]);
+    setCards((prev) => [...prev, card]);
   };
 
   return (
@@ -69,19 +71,20 @@ export const MapView = () => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
           <LocationSetter />
-          {cards.map(card => (
-            <Marker key={card.id} position={[card.lat, card.lng]}>
-              <Popup>
-              {card.image_url && <img src={card.image_url} width="100" alt={card.title} />}
-                <strong>{card.title}</strong><br />
-                {card.address}<br />
-
-              </Popup>
-            </Marker>
-          ))}
+          {cards
+            .filter((card) => card.lat && card.lng && !isNaN(card.lat) && !isNaN(card.lng)) // Filter out invalid lat/lng
+            .map((card) => (
+              <Marker key={card.id} position={[card.lat, card.lng]}>
+                <Popup>
+                  {card.image_url && <img src={card.image_url} width="100" alt={card.title} />}
+                  <strong>{card.title}</strong><br />
+                  {card.address}<br />
+                </Popup>
+              </Marker>
+            ))}
         </MapContainer>
       </div>
       {error && <div className="error-message">{error}</div>}
     </div>
   );
-}
+};

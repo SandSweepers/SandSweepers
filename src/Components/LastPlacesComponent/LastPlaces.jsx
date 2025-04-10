@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { AiOutlineHeart } from 'react-icons/ai';
-import { FaMapMarkerAlt } from 'react-icons/fa'; // this is for know untill we input icons in pubplic folder or make image 
+import { FaMapMarkerAlt } from 'react-icons/fa';
 import './LastPlaces.scss';
-
-// this one fetches from my mysql database =D 
-
 
 export const LastPlaces = () => {
   const [places, setPlaces] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8802/cards')
-      .then((response) => response.json())
-      .then((data) => setPlaces(data))
+    fetch('http://localhost:8080/api/locations')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch places');
+        }
+        return response.json();
+      })
+      .then((data) => setPlaces(data.data))
       .catch((error) => console.error('Error fetching places:', error));
   }, []);
 
@@ -23,10 +25,7 @@ export const LastPlaces = () => {
         {places.map((place) => (
           <div key={place.id} className="place-card">
             <div className="place-image">
-              <img
-                src={place.image_url}
-                alt={place.title}
-              />
+              <img src={place.image_url} alt={place.title} />
               <button className="favorite-button">
                 <AiOutlineHeart />
               </button>

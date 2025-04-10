@@ -16,7 +16,7 @@ export const BeachDetail = () => {
     const fetchBeach = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`http://localhost:8802/cards/${id}`);
+        const response = await fetch(`http://localhost:8080/api/locations/${id}`);
         if (!response.ok) {
           throw new Error('Beach not found');
         }
@@ -77,7 +77,7 @@ export const BeachDetail = () => {
               <FaTrashAlt />
             </div>
             <div className="trash-amount">
-              <span>{beach.trash_amount || '34'} kg</span>
+              <span>{beach.trash_amount || '0'} kg</span>
             </div>
           </div>
         </section>
@@ -85,10 +85,7 @@ export const BeachDetail = () => {
         <section className="beach-section visitors-section">
           <h2>Who have been here</h2>
           <div className="visitors-avatars">
-            {/* Placeholder avatars - in a real app, these would come from the database */}
-            <div className="avatar"><img src="/avatar-placeholder.jpg" alt="Visitor" /></div>
-            <div className="avatar"><img src="/avatar-placeholder.jpg" alt="Visitor" /></div>
-            <div className="avatar"><img src="/avatar-placeholder.jpg" alt="Visitor" /></div>
+            {/* Placeholder avatars */}
             <div className="avatar"><img src="/avatar-placeholder.jpg" alt="Visitor" /></div>
           </div>
         </section>
