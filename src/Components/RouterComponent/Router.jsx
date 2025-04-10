@@ -52,18 +52,22 @@ export const AppRouter = () => {
           </PrivateRoute>
         }
       />
-
-     
-
-      <Route path="/user" element={<UserPage />} />
-      <Route path="/map" element={<MapPage />} />
-      <Route path="/user" element={<UserPage/>}/>
-      <Route path="/" index element={<HomePage />} />
-      <Route path="/map" element={<MapPage/>}/>
-      <Route path="/card" element={<MapView/>}/>
-      <Route path="/beach/:id" element={<BeachDetail/>}/>
-      <Route path="/cleanup-form/:id" element={<CleanupForm />} />
-
+        <Route
+        path="/beach/:id"
+        element={
+          <PrivateRoute>
+            <BeachDetail />
+          </PrivateRoute>
+        }
+      />
+        <Route
+        path="/cleanup-form/:id"
+        element={
+          <PrivateRoute>
+            <CleanupForm />
+          </PrivateRoute>
+        }
+      />
     </Routes>
   );
 };
