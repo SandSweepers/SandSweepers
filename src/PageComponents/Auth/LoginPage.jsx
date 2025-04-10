@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../../utils/axiosConfig";
 import "./LoginPage.scss";
 
 export const LoginPage = () => {
@@ -26,7 +26,7 @@ export const LoginPage = () => {
       localStorage.setItem("token", response.data.token);
 
       // Rediriger vers la page d'accueil ou une autre page protégée
-      navigate("/dashboard");
+      navigate("/home");
     } catch (err) {
       setError(err.response?.data?.message || "Erreur lors de la connexion.");
       console.error("Erreur :", err);
