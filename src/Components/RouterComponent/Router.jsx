@@ -16,7 +16,7 @@ export const AppRouter = () => {
       <Route path="/" element={<LandingPage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/login" element={<LoginPage />} />
-<<<<<<< HEAD
+
       <Route
         path="/user"
         element={
@@ -49,15 +49,9 @@ export const AppRouter = () => {
           </PrivateRoute>
         }
       />
-=======
-      <Route path="/user" element={<UserPage />} />
-      <Route path="/map" element={<MapPage />} />
-      <Route path="/user" element={<UserPage/>}/>
-      <Route path="/" index element={<HomePage />} />
-      <Route path="/map" element={<MapPage/>}/>
-      <Route path="/card" element={<MapView/>}/>
-      <Route path="/beach/:id" element={<BeachDetail/>}/>
->>>>>>> 61c09363dddd51068ac71d02d38e10a950521623
+
+     
+
     </Routes>
   );
 };
