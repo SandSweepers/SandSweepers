@@ -18,8 +18,11 @@ export const BeachCard = () => {
 
     return (
         <>
-            <h2>Beaches</h2>
-            <Link to={"/card"}>+</Link>
+            <div className="beaches-header">
+                <h2>Beaches near you</h2>
+                <Link to={"/card"}></Link>
+                <img className="plus-icon" src="../../assets/Icons/Plus.svg" />
+            </div>
 
             <div className="beach-gallery">
                 {dummyData.map((location) => (
@@ -32,6 +35,7 @@ export const BeachCard = () => {
                             <p>{location.description}</p>
                             <Link to="/map">{location.address}</Link>
                             <span>PTS: {location.extra_points}</span>
+
                         </div>
                     </div>
                 ))}

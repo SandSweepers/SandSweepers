@@ -11,11 +11,11 @@ import iconRetina from 'leaflet/dist/images/marker-icon-2x.png';
 
 // Set up the default icon 
 let DefaultIcon = L.icon({
-  iconUrl: icon,
-  iconRetinaUrl: iconRetina,
-  shadowUrl: iconShadow,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41]
+    iconUrl: icon,
+    iconRetinaUrl: iconRetina,
+    shadowUrl: iconShadow,
+    iconSize: [25, 41],
+    iconAnchor: [12, 41]
 });
 
 L.Marker.prototype.options.icon = DefaultIcon;
@@ -45,14 +45,18 @@ export const MapPage = () => {
     );
 
     return (
+
         <div className="map-page">
             <div className="search-bar">
                 <input
                     type="text"
-                    placeholder="Search locations..."
+                    placeholder="Search"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                 />
+                <span class="search-icon">
+                    <i class="material-icons">ICON</i>
+                </span>
             </div>
             <MapContainer center={[27.9629, -15.5896]} zoom={11} style={{ height: '100vh', width: '100%' }}>
                 <TileLayer
