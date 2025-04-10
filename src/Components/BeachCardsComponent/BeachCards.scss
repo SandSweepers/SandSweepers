@@ -3,8 +3,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 50px;
   margin-bottom: -15px;
+  
 
   .plus-icon {
     position: relative;
@@ -14,6 +15,7 @@
 
 h2 {
   align-items: right;
+  margin-bottom: 25px;
 }
 
 .beach-gallery {
@@ -29,9 +31,9 @@ h2 {
     flex: 0 0 auto;
     width: 190px;
     height: 288px;
-    background-color: #F2F2F7;
+    background-color: #E9F7FF;
     border-radius: 24px;
-    border: 2px solid #F2F2F7;
+    border: 2px solid #E9F7FF;
     //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);??????????????
     scroll-snap-align: start;
     overflow: hidden;
@@ -74,6 +76,10 @@ h2 {
         font-size: 18px;
         font-weight: 800;
         color: #333;
+
+        &:hover {
+          color: #32B0FF;
+        }
       }
 
       p {
@@ -93,6 +99,7 @@ h2 {
 
         &:hover {
           text-decoration: underline;
+          color: #2c99de;
         }
       }
 

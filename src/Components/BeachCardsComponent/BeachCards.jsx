@@ -20,7 +20,8 @@ export const BeachCard = () => {
         <>
             <div className="beaches-header">
                 <h2>Beaches near you</h2>
-                <Link to={"/card"}><img className="plus-icon" src="/assets/Icons/Plus.svg"></img></Link>
+                <Link to={"/card"}></Link>
+                <img className="plus-icon" src="../../assets/Icons/Plus.svg" />
             </div>
 
             <div className="beach-gallery">
@@ -34,7 +35,7 @@ export const BeachCard = () => {
                             <p>{location.description}</p>
                             <Link to="/map">{location.address}</Link>
                             <span>PTS: {location.extra_points}</span>
-                        
+
                         </div>
                     </div>
                 ))}
