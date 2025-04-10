@@ -8,9 +8,6 @@ export const HomePage = () => {
     <>
       <Leaderboard />
       <BeachCard />
-      <div className="page">
-        <div className="rounded-box"></div>
-      </div>
     </>
   );
 };
