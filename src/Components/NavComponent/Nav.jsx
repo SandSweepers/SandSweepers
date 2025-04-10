@@ -1,8 +1,19 @@
-import { NavLink } from "react-router-dom";
+
+import React, { useState } from 'react';
+
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FaUser, FaHome, FaMapMarkerAlt } from 'react-icons/fa';
 import './Nav.scss';
 
 export const Navbar = () => {
+  const navigate = useNavigate();
+
+
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // Supprime le token
+    navigate("/login"); // Redirige vers la page de connexion
+  };
+
   return (
     <nav className="navbar">
       <ul>
@@ -12,7 +23,7 @@ export const Navbar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/" className={({ isActive }) => isActive ? 'active' : ''}>
+          <NavLink to="/home" className={({ isActive }) => isActive ? 'active' : ''}>
             <FaHome />
           </NavLink>
         </li>
@@ -20,6 +31,12 @@ export const Navbar = () => {
           <NavLink to="/map" className={({ isActive }) => isActive ? 'active' : ''}>
             <FaMapMarkerAlt />
           </NavLink>
+
+
+
+        </li>
+        <li>
+        <button onClick={handleLogout}>Logout</button>
         </li>
       </ul>
     </nav>

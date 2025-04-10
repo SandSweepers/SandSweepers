@@ -1,21 +1,21 @@
 import { Button } from "../ui/Button";
+// Components/auth/AuthForm.jsx
+import React from 'react';
 
-
-export const AuthForm = ({ fields, onSubmit, submitText }) => (
-  <FormContainer>
+export const AuthForm = ({ fields, onSubmit, onChange }) => {
+  return (
     <form onSubmit={onSubmit}>
       {fields.map((field) => (
-        <FormGroup key={field.name}>
-          <Label htmlFor={field.name}>{field.label}</Label>
-          <Input
-            id={field.name}
-            type={field.type || "text"}
-            placeholder={field.placeholder}
+        <div key={field.name}>
+          <label>{field.label}</label>
+          <input
+            type={field.type || 'text'}
+            name={field.name}
             required={field.required}
+            onChange={onChange} // Appelle la fonction onChange
           />
-        </FormGroup>
+        </div>
       ))}
-      <Button type="submit">{submitText}</Button>
     </form>
-  </FormContainer>
-);
+  );
+};
