@@ -24,7 +24,7 @@ export const UserPage = () => {
           <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="friends">Friends</a>
         </li>
         <li>
-          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="community">Community</a>
+          <a href="https://www.facebook.com/groups/1184294093171766" target="_blank" rel="noopener noreferrer" className="community">Community</a>
         </li>
       </ul>
     </div>
