@@ -1,6 +1,6 @@
 import './LeaderboardList.scss';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../../utils/axiosConfig';
 
 export const LeaderboardList = () => {
   const [users, setUsers] = useState([]);
@@ -9,8 +9,9 @@ export const LeaderboardList = () => {
   useEffect(() => {
     const fetchLeaderboardData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/leaderboard'); // Fetch the leaderboard data
-        setUsers(response.data.data); // Assuming the data is inside `data` key
+        const response = await api.get('/users/leaderboard/max-scores');
+        const sortedUsers = response.data.data.sort((a, b) => b.totalScore - a.totalScore);
+        setUsers(sortedUsers);
       } catch (error) {
         console.error('Error fetching leaderboard data:', error);
       }
@@ -32,10 +33,10 @@ export const LeaderboardList = () => {
 
       <ul>
         {users.slice(0, displayCount).map((user, index) => (
-          <li key={user.id}>
-            <div className="rank">{index + 1}</div> {/* Display correct rank starting from 1 */}
+          <li key={user.id || index}>
+            <div className="rank">{index + 4}</div> {/* Start from 4 since top 3 are shown separately */}
             <img
-              src={`https://i.pravatar.cc/150?img=${user.id}`} // Generate avatar dynamically
+              src={user.profile_picture || `https://i.pravatar.cc/150?img=${index + 4}`}
               alt={user.name}
             />
             <div className="name">{user.name}</div>
