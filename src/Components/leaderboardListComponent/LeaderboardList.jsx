@@ -5,22 +5,30 @@ import axios from 'axios';
 export const LeaderboardList = () => {
   const [users, setUsers] = useState([]);
   const [displayCount, setDisplayCount] = useState(3);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchLeaderboardData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/leaderboard'); // Fetch the leaderboard data
+        const response = await axios.get('http://localhost:8080/api/users/leaderboard/max-scores');
         setUsers(response.data.data); // Assuming the data is inside `data` key
       } catch (error) {
+        setError('Error fetching leaderboard data');
         console.error('Error fetching leaderboard data:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchLeaderboardData();
-  }, []); // Fetch data when the component mounts
+  }, []);
 
   const handleShowMore = () => setDisplayCount((prev) => prev + 3);
   const handleShowLess = () => setDisplayCount((prev) => Math.max(prev - 3, 3));
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
     <div className="leaderboard-list">
