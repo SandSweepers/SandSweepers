@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "../../utils/axiosConfig";
+import { useAuth } from "../../context/AuthContext";
 import "./LoginPage.scss";
 
 export const LoginPage = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleChange = (e) => {
     setFormData({
@@ -20,12 +21,7 @@ export const LoginPage = () => {
     setError(null);
 
     try {
-      const response = await axios.post("http://localhost:8080/api/users/signin", formData);
-
-      // Stocker le token JWT dans le localStorage
-      localStorage.setItem("token", response.data.token);
-
-      // Rediriger vers la page d'accueil ou une autre page protégée
+      await login(formData.username, formData.password);
       navigate("/home");
     } catch (err) {
       setError(err.response?.data?.message || "Erreur lors de la connexion.");
@@ -38,9 +34,9 @@ export const LoginPage = () => {
       <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
         <input
-          type="email"
+          type="text"
           name="username"
-          placeholder="Email"
+          placeholder="Username"
           value={formData.username}
           onChange={handleChange}
           required

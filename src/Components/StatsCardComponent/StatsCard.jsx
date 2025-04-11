@@ -1,5 +1,6 @@
 import './StatsCard.scss';
 import React, { useEffect, useState } from 'react';
+import api from '../../utils/axiosConfig';  // Importing axios instance
 
 export const StatsCard = () => {
   const [stats, setStats] = useState({ totalTrash: 0, totalHours: 0 });
@@ -7,13 +8,13 @@ export const StatsCard = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await fetch('http://localhost:8080/api/users/leaderboard/scores');
-        const data = await res.json();
+        const res = await api.get('/users/leaderboard/scores'); // Using axios for the GET request
+        const data = res.data.data;
 
         let totalTrash = 0;
         let totalHours = 0;
 
-        data.data.forEach((user) => {
+        data.forEach((user) => {
           user.activities.forEach((activity) => {
             totalTrash += activity.score / 1000; // Convert score to kg
             totalHours += activity.timeInHours / 100; // Add hours

@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import api from '../../utils/axiosConfig'; // 👈 Importamos Axios configurado
 import './BeachDetail.scss';
 
 export const BeachDetail = () => {
@@ -10,10 +11,9 @@ export const BeachDetail = () => {
 
   useEffect(() => {
     // Fetch beach details
-    fetch(`http://localhost:8080/api/locations`)
-      .then(response => response.json())
-      .then(data => {
-        const foundBeach = data.data.find(item => item.id === parseInt(id));
+    api.get('/locations')
+      .then(res => {
+        const foundBeach = res.data.data.find(item => item.id === parseInt(id));
         setBeach(foundBeach);
         setLoading(false);
       })
@@ -22,12 +22,10 @@ export const BeachDetail = () => {
         setLoading(false);
       });
 
-    // Fetch users who have been here (placeholder - in a real app, you'd fetch actual participants)
-    fetch('http://localhost:8080/api/users')
-      .then(response => response.json())
-      .then(data => {
-        // Just take the first 4 users as an example
-        setUsers(data.data.slice(0, 4));
+    // Fetch users (si también está protegido)
+    api.get('/users')
+      .then(res => {
+        setUsers(res.data.data.slice(0, 4));
       })
       .catch(error => {
         console.error('Error fetching users:', error);
@@ -54,7 +52,7 @@ export const BeachDetail = () => {
         <div className="description-section">
           <h3>Description</h3>
           <p>{beach.description}</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque sed id placeat consequatur, ex facilis reiciendunt ipsum tempore perferendis dolorem finibus...</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
         </div>
         
         <div className="trash-collected">

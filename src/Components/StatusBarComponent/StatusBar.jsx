@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './StatusBar.scss';
+import api from '../../utils/axiosConfig';  // Importing axios instance
 
 export const StatusBar = () => {
   const [totalScore, setTotalScore] = useState(0);
@@ -9,10 +10,10 @@ export const StatusBar = () => {
   useEffect(() => {
     const fetchScores = async () => {
       try {
-        const res = await fetch('http://localhost:8080/api/users/leaderboard/max-scores');
-        const data = await res.json();
+        const res = await api.get('/users/leaderboard/max-scores'); // Axios call
+        const data = res.data.data;
 
-        const total = data.data.reduce((sum, user) => sum + (parseInt(user.totalScore) || 0), 0);
+        const total = data.reduce((sum, user) => sum + (parseInt(user.totalScore) || 0), 0);
         setTotalScore(total);
 
         // Calculate progress percentage

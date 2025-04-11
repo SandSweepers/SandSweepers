@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { FaMapMarkerAlt } from 'react-icons/fa';
+import api from '../../utils/axiosConfig'; // 👈 Axios configurado con token
 import './LastPlaces.scss';
+
 
 export const LastPlaces = () => {
   const [places, setPlaces] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/locations')
+    api.get('/locations')
       .then((response) => {
-        if (!response.ok) {
-          throw new Error('Failed to fetch places');
-        }
-        return response.json();
+        setPlaces(response.data.data);
       })
-      .then((data) => setPlaces(data.data))
-      .catch((error) => console.error('Error fetching places:', error));
+      .catch((error) => {
+        console.error('Error fetching places:', error);
+      });
   }, []);
 
   return (

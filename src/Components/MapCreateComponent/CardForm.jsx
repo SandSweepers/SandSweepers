@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CardForm.scss';
-
+import api from '../../utils/axiosConfig';
 
 export const CardForm = ({ onCardCreated, location }) => {
   const [formData, setFormData] = useState({
@@ -48,17 +48,14 @@ export const CardForm = ({ onCardCreated, location }) => {
           dirtiness: formData.dirtiness
         };
 
-        const res = await fetch('http://localhost:8080/api/locations', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
+        // Use Axios to make the POST request
+        const res = await api.post('/locations', payload);
 
-        if (!res.ok) {
+        if (res.status !== 200) {
           throw new Error(`Server responded with ${res.status}`);
         }
 
-        const newCard = await res.json();
+        const newCard = res.data;
         if (onCardCreated) onCardCreated(newCard);
         navigate('/map');
       };
