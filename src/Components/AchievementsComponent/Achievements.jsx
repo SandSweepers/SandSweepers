@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Achievements.scss';
+import api from '../../utils/axiosConfig';  // Importing axios instance
 
 export const Achievements = ({ username }) => {
   const [achievements, setAchievements] = useState([]);
@@ -9,15 +10,13 @@ export const Achievements = ({ username }) => {
     const fetchAchievements = async () => {
       try {
         // Fetch achievements
-        const achievementsRes = await fetch('http://localhost:8080/api/achievements');
-        const achievementsData = await achievementsRes.json();
-        setAchievements(achievementsData.data);
+        const achievementsRes = await api.get('/achievements'); // Using axios to fetch achievements
+        setAchievements(achievementsRes.data.data);
 
         // Fetch user scores
-        const scoresRes = await fetch('http://localhost:8080/api/users/leaderboard/max-scores');
-        const scoresData = await scoresRes.json();
-        const user = scoresData.data.find((user) => user.name === username);
-        setUserScore(parseInt(user?.totalScore || 500));
+        const scoresRes = await api.get('/users/leaderboard/max-scores'); // Using axios to fetch user scores
+        const user = scoresRes.data.data.find((user) => user.name === username);
+        setUserScore(parseInt(user?.totalScore || 500)); // Default score of 500 if no user found
       } catch (error) {
         console.error('Error fetching achievements or user scores:', error);
       }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './MapPage.scss';
@@ -8,6 +8,8 @@ import './MapPage.scss';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import iconRetina from 'leaflet/dist/images/marker-icon-2x.png';
+
+import api from '../../utils/axiosConfig'; // Import axios instance
 
 let DefaultIcon = L.icon({
     iconUrl: icon,
@@ -25,18 +27,17 @@ export const MapPage = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/locations')
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error('Failed to fetch locations');
-                }
-                return res.json();
-            })
-            .then(data => setLocations(data.data))
-            .catch(err => {
+        const fetchLocations = async () => {
+            try {
+                const response = await api.get('/locations');
+                setLocations(response.data.data);
+            } catch (err) {
                 console.error('Error fetching locations:', err);
                 setError('Failed to load locations. Please try again later.');
-            });
+            }
+        };
+
+        fetchLocations();
     }, []);
 
     const filteredLocations = locations.filter(location =>

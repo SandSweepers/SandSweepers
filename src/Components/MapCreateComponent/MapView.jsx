@@ -4,6 +4,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { CardForm } from './CardForm';
 import './MapView.scss';
+import api from '../../utils/axiosConfig'; // Import axios instance
 
 // Default icon setup
 import icon from 'leaflet/dist/images/marker-icon.png';
@@ -28,12 +29,8 @@ export const MapView = () => {
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        const res = await fetch('http://localhost:8080/api/locations');
-        if (!res.ok) {
-          throw new Error('Failed to fetch cards');
-        }
-        const data = await res.json();
-        setCards(data.data);
+        const res = await api.get('/locations');
+        setCards(res.data.data);
       } catch (err) {
         console.error('Error fetching cards:', err);
         setError('Failed to load cards. The map will still work for adding new locations.');

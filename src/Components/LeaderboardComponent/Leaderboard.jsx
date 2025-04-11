@@ -1,6 +1,7 @@
 import './Leaderboard.scss';
 import { useEffect, useState } from 'react';
 import { LeaderboardList } from '../leaderboardListComponent/LeaderboardList';
+import api from '../../utils/axiosConfig'; // Import your axios instance
 
 export const Leaderboard = () => {
     const [sortedUsers, setSortedUsers] = useState([]);
@@ -9,8 +10,9 @@ export const Leaderboard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch('http://localhost:8080/api/users/leaderboard/max-scores');
-                const data = await res.json();
+                // Use Axios to fetch data
+                const res = await api.get('/users/leaderboard/max-scores'); // Adjust the URL if necessary
+                const data = res.data;
 
                 // Map and format the data to match the leaderboard structure
                 const validUsers = data.data.map((user, index) => ({
