@@ -112,12 +112,21 @@
     background-color: #32B0FF;
     border: 2px solid #32B0FF;
     border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
 
     &:hover {
       background-color: #FEFEFE;
-      border-color: #FEFEFE;
+      border-color: #32B0FF;
       color: #32B0FF;
+    }
+
+    &:active {
+      transform: scale(0.98);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
   }
 }

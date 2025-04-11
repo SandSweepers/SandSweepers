@@ -1,7 +1,8 @@
 .map-page {
   position: relative;
-  height: 100vh;
+  height: calc(100vh - 90px);
   width: 100%;
+  margin-bottom: 90px;
 }
 
 .search-bar {
@@ -18,7 +19,6 @@
   margin-top: 0px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
-
 
 .search-bar input {
   border: none;

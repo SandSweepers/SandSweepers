@@ -1,18 +1,16 @@
 import './Leaderboard.scss';
 import { useEffect, useState } from 'react';
 import { LeaderboardList } from '../leaderboardListComponent/LeaderboardList';
-import api from '../../utils/axiosConfig'; // Import your axios instance
 
 export const Leaderboard = () => {
     const [sortedUsers, setSortedUsers] = useState([]);
-    const [showMore, setShowMore] = useState(true); // Default to true to show the list on load
+    const [showMore, setShowMore] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // Use Axios to fetch data
-                const res = await api.get('/users/leaderboard/max-scores'); // Adjust the URL if necessary
-                const data = res.data;
+                const res = await fetch('http://localhost:8080/api/users/leaderboard/max-scores');
+                const data = await res.json();
 
                 // Map and format the data to match the leaderboard structure
                 const validUsers = data.data.map((user, index) => ({
@@ -34,13 +32,11 @@ export const Leaderboard = () => {
     }, []);
 
     const handleShowMore = () => setShowMore(true);
-    const handleShowLess = () => setShowMore(false);
 
     return (
         <div className="leaderboard">
             <div className="leaderboard-header">
-                <div className="logo"><img src="public/images/ChatGPT Image 10 apr 2025, 13_42_15 1.svg" alt="logo" /></div> 
-                <h1>Sand Sweepers</h1>
+                <div className="logo"><img src="public/images/ChatGPT Image 10 apr 2025, 13_42_15 1.svg" alt="logo" /></div> <p>Sand Sweepers</p>
             </div>
 
             <div className="top-users">
@@ -70,11 +66,9 @@ export const Leaderboard = () => {
             </div>
 
             {showMore && <LeaderboardList users={sortedUsers.slice(3)} />}
-            {!showMore ? (
+            {!showMore && (
                 <button className="see-more-btn" onClick={handleShowMore}>See More</button>
-            ) : (
-                <button className="see-less-btn" onClick={handleShowLess}>Show Less</button>
             )}
         </div>
     );
-};
+}
