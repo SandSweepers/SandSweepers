@@ -22,8 +22,11 @@ export const BeachCard = () => {
     return (
         <>
             <div className="beaches-header">
-                <h2>Beaches near you</h2>
-                <Link to={"/card"}><img className="plus-icon" src="/assets/Icons/Plus.svg" alt="Add Beach"></img></Link>
+                <h2>Press To Play!</h2>
+                <Link to="/card">
+                    Add Your Own!
+                    <img src="/assets/Icons/Plus.svg" alt="Add Icon" />
+                </Link>
             </div>
 
             <div className="beach-gallery">
