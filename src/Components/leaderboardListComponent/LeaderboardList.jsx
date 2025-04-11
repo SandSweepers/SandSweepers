@@ -49,7 +49,7 @@ export const LeaderboardList = () => {
       {displayCount < users.length && (
         <button onClick={handleShowMore}>Show More</button>
       )}
-      {displayCount > 3 && (
+      {displayCount > 3 && users.length > 3 && (
         <button onClick={handleShowLess}>Show Less</button>
       )}
     </div>

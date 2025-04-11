@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import './BeachCards.scss';
 import api from '../../utils/axiosConfig'; 
 import { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 export const BeachCard = () => {
     const [locations, setLocations] = useState([]);
@@ -17,9 +19,13 @@ export const BeachCard = () => {
         <>
             <div className="beaches-header">
                 <h2>Beaches near you</h2>
-                {/* Link to add a new beach */}
+                {/* Link to add a new beach using Font Awesome */}
                 <Link to="/card">
-                    <img className="plus-icon" src="/assets/Icons/Plus.svg" alt="Add Beach" />
+                    <FontAwesomeIcon 
+                        icon={faPlus} 
+                        className="plus-icon" 
+                        aria-label="Add Beach"
+                    />
                 </Link>
             </div>
 
