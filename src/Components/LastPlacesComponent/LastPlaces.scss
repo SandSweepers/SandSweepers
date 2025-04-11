@@ -1,32 +1,41 @@
 .last-places {
-  padding: 0 20px 25px;
+  padding: 20px;
 
   h2 {
     font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 15px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #333;
   }
 
   .places-grid {
     display: flex;
-    gap: 15px;
+    gap: 20px;
     overflow-x: auto;
     padding-bottom: 10px;
-
+    justify-content: center; // Center the cards horizontally
+    align-items: center; // Center the cards vertically (optional)
+  
     &::-webkit-scrollbar {
       display: none;
     }
   }
 
   .place-card {
-    min-width: 180px;
+    max-width: 250px;
     background-color: white;
-    border-radius: 15px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
 
     .place-image {
-      height: 120px;
+      height: 140px;
       position: relative;
 
       img {
@@ -49,18 +58,22 @@
         justify-content: center;
         cursor: pointer;
         font-size: 16px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       }
     }
 
     h3 {
       margin: 10px 12px 5px;
-      font-size: 16px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #1e40af;
     }
 
     .place-description {
       margin: 0 12px 10px;
-      font-size: 12px;
-      color: #6e6e6e;
+      font-size: 14px;
+      color: #666;
+      line-height: 1.5;
     }
 
     .place-footer {
@@ -68,18 +81,18 @@
       justify-content: space-between;
       padding: 10px 12px;
       border-top: 1px solid #f0f0f0;
-      font-size: 12px;
+      font-size: 14px;
 
       .distance {
         display: flex;
         align-items: center;
         gap: 5px;
-        color: #6e6e6e;
+        color: #666;
       }
 
       .points {
-        color: #4cd964;
-        font-weight: 500;
+        color: #4caf50;
+        font-weight: 600;
       }
     }
   }

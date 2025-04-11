@@ -1,0 +1,60 @@
+.achievements {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+  }
+
+  .achievement-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .achievement-card {
+    background-color: white;
+    border-radius: 16px;
+    padding: 20px;
+    width: 220px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1e40af;
+    }
+
+    p {
+      margin: 0 0 15px;
+      font-size: 14px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    span {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #4caf50;
+      background-color: #e8f5e9;
+      padding: 5px 10px;
+      border-radius: 12px;
+    }
+  }
+}

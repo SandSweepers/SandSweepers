@@ -22,13 +22,10 @@ export const LastPlaces = () => {
     <section className="last-places">
       <h2>Last Places Visited</h2>
       <div className="places-grid">
-        {places.map((place) => (
+        {places.slice(0, 2).map((place) => (
           <div key={place.id} className="place-card">
             <div className="place-image">
               <img src={place.image_url} alt={place.title} />
-              <button className="favorite-button">
-                <AiOutlineHeart />
-              </button>
             </div>
             <h3>{place.title}</h3>
             <p className="place-description">{place.description}</p>

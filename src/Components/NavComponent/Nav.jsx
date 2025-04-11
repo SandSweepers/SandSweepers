@@ -9,10 +9,7 @@ export const Navbar = () => {
   const navigate = useNavigate();
 
 
-  const handleLogout = () => {
-    localStorage.removeItem("token"); // Supprime le token
-    navigate("/login"); // Redirige vers la page de connexion
-  };
+
 
   return (
     <nav className="navbar">
@@ -35,9 +32,7 @@ export const Navbar = () => {
 
 
         </li>
-        <li>
-        <button onClick={handleLogout}>Logout</button>
-        </li>
+
       </ul>
     </nav>
   );

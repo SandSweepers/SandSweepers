@@ -12,16 +12,16 @@ export const Leaderboard = () => {
                 const res = await fetch('http://localhost:8080/api/users/leaderboard/max-scores');
                 const data = await res.json();
 
-                // Filter out users with null scores (optional)
+                // Map and format the data to match the leaderboard structure
                 const validUsers = data.data.map((user, index) => ({
-                    id: index + 1,
-                    username: user.name,
-                    profile_picture: `https://example.com/avatar/default.jpg`, // Placeholder or replace with real avatar
-                    points: parseInt(user.totalScore) || 0,
-                    total_time_spent: parseInt(user.totalTimeInHours) || 0
+                    id: index + 1, // Generate a unique ID for each user
+                    name: user.name,
+                    totalScore: parseInt(user.totalScore) || 0, // Parse totalScore as an integer
+                    totalTimeInHours: parseInt(user.totalTimeInHours) || 0 // Parse totalTimeInHours as an integer
                 }));
 
-                const sorted = validUsers.sort((a, b) => b.points - a.points);
+                // Sort users by totalScore in descending order
+                const sorted = validUsers.sort((a, b) => b.totalScore - a.totalScore);
                 setSortedUsers(sorted);
             } catch (error) {
                 console.error('Error fetching leaderboard:', error);
@@ -51,11 +51,16 @@ export const Leaderboard = () => {
                     return (
                         <div key={user.id} className={`user-card ${positionClass}`}>
                             <div className="avatar-container">
-                                <img src={user.profile_picture} alt={user.username} className="avatar" />
+                                <img
+                                    src={`https://i.pravatar.cc/150?img=${user.id}`} // Generate avatar dynamically
+                                    alt={user.name}
+                                    className="avatar"
+                                />
                             </div>
                             <div className="user-details">
-                                <h3>{user.username}</h3>
-                                <p>PTS: {user.points}</p>
+                                <h3>{user.name}</h3>
+                                <p>PTS: {user.totalScore}</p>
+                                <p>Hours: {user.totalTimeInHours}</p>
                             </div>
                         </div>
                     );
