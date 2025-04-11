@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import './BeachCards.scss';
-import api from '../../utils/axiosConfig'; // Adjust the import path as necessary
+import api from '../../utils/axiosConfig'; 
 import { useEffect, useState } from 'react';
-
 
 export const BeachCard = () => {
     const [locations, setLocations] = useState([]);
@@ -17,7 +16,9 @@ export const BeachCard = () => {
         <>
             <div className="beaches-header">
                 <h2>Beaches near you</h2>
-                <Link to={"/card"}><img className="plus-icon" src="/assets/Icons/Plus.svg" alt="Add Beach" /></Link>
+                <Link to="/card">
+                    <img className="plus-icon" src="/assets/Icons/Plus.svg" alt="Add Beach" />
+                </Link>
             </div>
 
             <div className="beach-gallery">

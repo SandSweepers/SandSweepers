@@ -5,7 +5,7 @@ import api from '../../utils/axiosConfig'; // Import your axios instance
 
 export const Leaderboard = () => {
     const [sortedUsers, setSortedUsers] = useState([]);
-    const [showMore, setShowMore] = useState(false);
+    const [showMore, setShowMore] = useState(true); // Default to true to show the list on load
 
     useEffect(() => {
         const fetchData = async () => {
@@ -39,8 +39,8 @@ export const Leaderboard = () => {
     return (
         <div className="leaderboard">
             <div className="leaderboard-header">
-                <div className="logo">LOGO</div>
-                <h1>Leaderboard</h1>
+                <div className="logo"><img src="public/images/ChatGPT Image 10 apr 2025, 13_42_15 1.svg" alt="logo" /></div> 
+                <h1>Sand Sweepers</h1>
             </div>
 
             <div className="top-users">
