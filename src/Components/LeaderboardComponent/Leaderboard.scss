@@ -5,21 +5,19 @@ $bmw-black: #000000;
 $light-gray: #f2f2f2;
 
 .leaderboard-container {
-  width: 440px;
-  height: 400px;
+  width: 100%; // Mobile-first width
+  max-width: 440px;
+  height: auto;
   background: #83d4ffb3;
+  margin: 0 auto;
   border-bottom: 1px solid #83d4ffb3;
   border-bottom-right-radius: 100px;
   border-bottom-left-radius: 100px;
-  margin-top: -30px;
-  margin-left: -40px;
-
- 
 }
 
 .leaderboard {
-  max-width: 600px;
-  margin-top: 20px;
+  max-width: 440px; // Mobile-first width
+  margin: 0 auto;
   padding: 10px;
   font-family: "BMW Type Next", Arial, sans-serif;
 
@@ -196,6 +194,28 @@ $light-gray: #f2f2f2;
         }
       }
     }
+  }
+}
+
+// Tablet styling
+@media (min-width: 768px) {
+  .leaderboard-container {
+    max-width: 768px;
+  }
+
+  .leaderboard {
+    max-width: 768px;
+  }
+}
+
+// Computer styling
+@media (min-width: 1024px) {
+  .leaderboard-container {
+    max-width: 1024px;
+  }
+
+  .leaderboard {
+    max-width: 1024px;
   }
 }
 

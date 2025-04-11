@@ -22,6 +22,8 @@
   }
 
   .place-card {
+    width: 250px; // Set static width
+    height: 320px; // Set static height
     max-width: 250px;
     background-color: white;
     border-radius: 16px;
@@ -84,16 +86,15 @@
       font-size: 14px;
 
       .distance {
-        display: flex;
-        align-items: center;
         gap: 5px;
         color: #666;
       }
 
       .points {
         color: #4caf50;
-        font-weight: 600;
+        font-weight: 400;
       }
     }
   }
+
 }

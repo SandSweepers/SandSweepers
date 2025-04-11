@@ -1,8 +1,7 @@
 form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
+  padding: 0.5rem;
   background: #f4f4f4;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -15,7 +14,6 @@ form {
 
 .create-card-button {
   display: inline-block;
-  padding: 0.8rem 1.5rem;
   background-color: #007bff;
   color: white;
   border: none;
@@ -27,4 +25,61 @@ form {
 
 .create-card-button:hover {
   background-color: #0056b3;
+}
+
+.card-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  background: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+
+  margin: 1rem auto; /* Center the form horizontally */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-form label {
+  font-weight: bold;
+  margin: 0.5rem;
+}
+
+.card-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card-form input[type="text"],
+.card-form textarea,
+.card-form select,
+.card-form input[type="file"] {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+
+.card-form button {
+  padding: 0.8rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card-form button:hover {
+  background-color: #0056b3;
+}
+
+.card-form p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.5rem;
+  text-align: center;
 }

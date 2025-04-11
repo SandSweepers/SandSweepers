@@ -37,4 +37,14 @@
       transition: width 0.3s ease;
     }
   }
+
+  @media (min-width: 768px) {
+    padding: 30px;
+    margin: 30px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 40px;
+    margin: 40px;
+  }
 }

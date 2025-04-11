@@ -1,7 +1,7 @@
 .map-view-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 120vh;
   width: 100%;
   position: relative;
 }
@@ -9,7 +9,7 @@
 .map-container {
   flex: 1;
   width: 100%;
-  height: calc(100vh - 60px); // Adjust height to leave space for the Navbar
+  height: calc(200vh - 60px); // Adjust height to leave space for the Navbar
   position: relative;
   z-index: 1;
 }

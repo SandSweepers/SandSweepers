@@ -1,125 +1,140 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import './CardForm.scss';
+
 
 export const CardForm = ({ onCardCreated, location }) => {
-  const [formData, setFormData] = useState({ 
-    title: '', 
-    description: '', 
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
     image: null,
-    location: '',
-    dirtiness: '',
-    address: '' // Added address field
+    address: '',
+    dirtiness: ''
   });
   const navigate = useNavigate();
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleFileChange = (e) => {
+    setFormData((prev) => ({ ...prev, image: e.target.files[0] }));
+  };
+
   const handleSubmit = async (e) => {
-    
     e.preventDefault();
-    
+
     if (!location) {
-      alert("Please select a location on the map first");
+      alert('Please select a location on the map first.');
+      return;
+    }
+
+    if (!formData.image) {
+      alert('Please upload an image.');
       return;
     }
 
     try {
-      // Only proceed if an image file is selected
-      if (formData.image) {
-        const reader = new FileReader();
-        reader.onloadend = async () => {
-          const payload = {
-            title: formData.title,
-            description: formData.description,
-            imageBase64: reader.result,
-            lat: location.lat,
-            lng: location.lng,
-            dirtiness: formData.dirtiness,
-            address: formData.address // Ensure 'address' is sent in the payload
-          };
-
-          // Updated API URL to match the correct backend endpoint
-          const res = await fetch('http://localhost:8080/api/locations', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          });
-
-          if (!res.ok) {
-            throw new Error(`Server responded with ${res.status}`);
-          }
-
-          const newCard = await res.json();
-          if (onCardCreated) {
-            onCardCreated(newCard);
-          }
-          
-          // Navigate to home page after successful submission
-          navigate('/map');
+      const reader = new FileReader();
+      reader.onloadend = async () => {
+        const payload = {
+          title: formData.title,
+          description: formData.description,
+          imageBase64: reader.result,
+          lat: location.lat,
+          lng: location.lng,
+          address: formData.address,
+          dirtiness: formData.dirtiness
         };
 
-        reader.readAsDataURL(formData.image);
-      
-      } else {
-        alert("Please select an image");
-      }
+        const res = await fetch('http://localhost:8080/api/locations', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) {
+          throw new Error(`Server responded with ${res.status}`);
+        }
+
+        const newCard = await res.json();
+        if (onCardCreated) onCardCreated(newCard);
+        navigate('/map');
+      };
+
+      reader.readAsDataURL(formData.image);
     } catch (error) {
-      console.error("Error creating card:", error);
-      alert("Failed to create card. Please try again.");
+      console.error('Error creating card:', error);
+      alert('Failed to create card. Please try again.');
     }
   };
 
-
-
   return (
-    <form onSubmit={handleSubmit}>
-      <input 
-        type="file" 
-        accept="image/*" 
-        required 
-        onChange={e => setFormData({ ...formData, image: e.target.files[0] })} 
+    <form className="card-form" onSubmit={handleSubmit}>
+      <label htmlFor="image">Upload Image</label>
+      <input
+        id="image"
+        type="file"
+        accept="image/*"
+        required
+        onChange={handleFileChange}
       />
-      
-      <input 
-        type="text" 
-        placeholder="Title" 
-        required 
+
+      <label htmlFor="title">Title</label>
+      <input
+        id="title"
+        name="title"
+        type="text"
+        placeholder="Enter title"
+        required
         value={formData.title}
-        onChange={e => setFormData({ ...formData, title: e.target.value })} 
+        onChange={handleInputChange}
       />
-      
-      <textarea 
-        placeholder="Tell Us About The Beach" 
-        required 
+
+      <label htmlFor="description">Description</label>
+      <textarea
+        id="description"
+        name="description"
+        placeholder="Enter description"
+        required
         value={formData.description}
-        onChange={e => setFormData({ ...formData, description: e.target.value })} 
+        onChange={handleInputChange}
       />
-      
-      <textarea 
-        placeholder="Address" 
-        required 
+
+      <label htmlFor="address">Address</label>
+      <textarea
+        id="address"
+        name="address"
+        placeholder="Enter address"
+        required
         value={formData.address}
-        onChange={e => setFormData({ ...formData, address: e.target.value })} 
+        onChange={handleInputChange}
       />
-      
-      <select 
-        required 
+
+      <label htmlFor="dirtiness">Dirtiness Level</label>
+      <select
+        id="dirtiness"
+        name="dirtiness"
+        required
         value={formData.dirtiness}
-        onChange={(e) => setFormData({ ...formData, dirtiness: e.target.value })}
+        onChange={handleInputChange}
       >
-        <option value="" disabled>How Dirty Is The Beach</option>
+        <option value="" disabled>
+          Select dirtiness level
+        </option>
         <option value="Low">Low</option>
         <option value="Medium">Medium</option>
         <option value="High">High</option>
       </select>
-      
+
       {location ? (
         <p>Selected location: {location.lat.toFixed(4)}, {location.lng.toFixed(4)}</p>
       ) : (
-        <p>Click on the map to select a location</p>
+        <p>Please select a location on the map.</p>
       )}
-      
-      
+
       <button type="submit">Create Card</button>
     </form>
   );
-
-}
+};

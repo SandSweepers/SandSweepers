@@ -58,11 +58,13 @@ export const MapView = () => {
 
   return (
     <div className="map-view-container">
-      <CardForm onCardCreated={addNewCard} location={selected} />
+      <div className="card-form-container">
+        <CardForm onCardCreated={addNewCard} location={selected} />
+      </div>
       <div className="map-container">
         <MapContainer 
-          center={[27.9629, -15.5896]} 
-          zoom={11} 
+          center={[27.939, -15.5896]} 
+          zoom={10.5} 
           className="leaflet-container"
           style={{ height: '100%', width: '100%' }}
         >

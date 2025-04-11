@@ -23,7 +23,7 @@ h2 {
   overflow-x: auto;
   gap: 20px;
   padding: 20px;
-  max-width: 100%;
+  max-width: 440px; // Mobile-first width
   margin: 0 auto;
   scroll-snap-type: x mandatory;
 
@@ -109,5 +109,19 @@ h2 {
         font-weight: 800;
       }
     }
+  }
+}
+
+// Tablet styling
+@media (min-width: 768px) {
+  .beach-gallery {
+    max-width: 768px;
+  }
+}
+
+// Computer styling
+@media (min-width: 1024px) {
+  .beach-gallery {
+    max-width: 1024px;
   }
 }

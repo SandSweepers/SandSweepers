@@ -1,8 +1,7 @@
 .navbar {
     position: relative; 
-    max-width: 768px; 
+    max-width: 440px; // Mobile-first width
     width: 100%;
-    margin-top: px;
     height: 90px;
     display: flex;
     align-items: center;
@@ -37,4 +36,18 @@
         }
       }
     }
-  }
+}
+
+// Tablet styling
+@media (min-width: 768px) {
+    .navbar {
+        max-width: 768px;
+    }
+}
+
+// Computer styling
+@media (min-width: 1024px) {
+    .navbar {
+        max-width: 1024px;
+    }
+}
