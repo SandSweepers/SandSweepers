@@ -1,9 +1,3 @@
-// npm install react-router-dom
-//npm install -D sass-embedded
-// npm install styled-components
-//npm install mysql
-//npm install axios
-//npm i dotenv
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { AuthProvider } from './context/AuthContext.jsx'
