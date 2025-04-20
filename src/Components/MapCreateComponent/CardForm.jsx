@@ -51,7 +51,8 @@ export const CardForm = ({ onCardCreated, location }) => {
         // Use Axios to make the POST request
         const res = await api.post('/locations', payload);
 
-        if (res.status !== 200) {
+        // Handle both 200 and 201 as success
+        if (res.status !== 200 && res.status !== 201) {
           throw new Error(`Server responded with ${res.status}`);
         }
 
