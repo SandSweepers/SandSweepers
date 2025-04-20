@@ -13,11 +13,8 @@ const urlsToCache = [
   '/icons/icon-384x384.png',
   '/icons/icon-512x512.png',
   '/icons/maskable-icon.png',
-  'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
-  'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js',
-  'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js'
-];
-
+  'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css'
+]
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
