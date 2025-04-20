@@ -14,8 +14,7 @@ const urlsToCache = [
   '/icons/icon-512x512.png',
   '/icons/maskable-icon.png',
   'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
-  'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js',
-  'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+  'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js'
 ];
 
 self.addEventListener('install', event => {
