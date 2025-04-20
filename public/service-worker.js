@@ -14,6 +14,7 @@ const urlsToCache = [
   '/icons/icon-512x512.png',
   '/icons/maskable-icon.png',
   'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
+  'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js',
   'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js'
 ];
 
@@ -23,6 +24,9 @@ self.addEventListener('install', event => {
       .then(cache => {
         console.log('Opened cache');
         return cache.addAll(urlsToCache);
+      })
+      .catch(error => {
+        console.error('Error during cache installation:', error);
       })
   );
 });
@@ -36,8 +40,8 @@ self.addEventListener('fetch', event => {
           return response;
         }
 
-        return fetch(event.request).then(
-          response => {
+        return fetch(event.request)
+          .then(response => {
             // Check if we received a valid response
             if(!response || response.status !== 200 || response.type !== 'basic') {
               return response;
@@ -49,11 +53,22 @@ self.addEventListener('fetch', event => {
             caches.open(CACHE_NAME)
               .then(cache => {
                 cache.put(event.request, responseToCache);
+              })
+              .catch(error => {
+                console.error('Error caching response:', error);
               });
 
             return response;
-          }
-        );
+          })
+          .catch(error => {
+            console.error('Fetch error:', error);
+            // Return a fallback response or null
+            return null;
+          });
+      })
+      .catch(error => {
+        console.error('Cache match error:', error);
+        return null;
       })
   );
 });
