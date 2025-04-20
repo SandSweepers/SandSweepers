@@ -1,4 +1,4 @@
-import { Button } from "../ui/Button";
+import { Button } from "../uiComponent/Button";
 // Components/auth/AuthForm.jsx
 import React from 'react';
 

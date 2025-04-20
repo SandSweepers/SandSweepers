@@ -1,6 +1,6 @@
-import { Logo } from '../../Components/ui/Logo';
-import { AuthForm } from '../../Components/auth/AuthForm';
-import { Button } from '../../Components/ui/Button';
+import { Logo } from '../../Components/uiComponent/Logo';
+import { AuthForm } from '../../Components/authComponent/AuthForm';
+import { Button } from '../../Components/uiComponent/Button';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from "../../utils/axiosConfig";
