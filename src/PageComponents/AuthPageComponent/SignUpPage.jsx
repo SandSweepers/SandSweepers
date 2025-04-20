@@ -1,5 +1,5 @@
 import { Logo } from '../../Components/uiComponent/Logo';
-import { AuthForm } from '../../Components/AuthComponent/AuthForm';
+import { AuthForm } from '../../Components/authComponent/AuthForm';
 import { Button } from '../../Components/uiComponent/Button';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
